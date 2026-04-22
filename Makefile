@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++20 -O2 -pipe -static-libstdc++ -static-libgcc
+CXXFLAGS := -std=c++20 -O2 -pipe
 LDFLAGS := 
 
 all: code
