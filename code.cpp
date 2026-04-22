@@ -144,8 +144,8 @@ void default_print(std::ostream &os, const T &val) {
     if constexpr (is_string_like_v<D>) {
         os << to_sv(val);
     } else if constexpr (std::is_integral_v<D> && !std::is_same_v<D, bool>) {
-        if constexpr (std::is_signed_v<D>) os << static_cast<long long>(val);
-        else os << static_cast<unsigned long long>(val);
+        if constexpr (std::is_signed_v<D>) os << static_cast<std::int64_t>(val);
+        else os << static_cast<std::uint64_t>(val);
     } else if constexpr (is_vector_v<D>) {
         default_print_vector(os, val);
     } else if constexpr (has_ostream_insertion<D>) {
@@ -169,14 +169,14 @@ void format_value(std::ostream &os, char spec, const T &val) {
         break;
     case 'd':
         if constexpr (std::is_integral_v<D> && !std::is_same_v<D, bool>) {
-            os << static_cast<long long>(val);
+            os << static_cast<std::int64_t>(val);
         } else {
             throw format_error{"%d requires integral"};
         }
         break;
     case 'u':
         if constexpr (std::is_integral_v<D> && !std::is_same_v<D, bool>) {
-            os << static_cast<unsigned long long>(val);
+            os << static_cast<std::uint64_t>(val);
         } else {
             throw format_error{"%u requires integral"};
         }
