@@ -4,6 +4,7 @@
 #include <vector>
 #include <type_traits>
 #include <concepts>
+#include <cstdint>
 using namespace std;
 
 namespace sjtu {
